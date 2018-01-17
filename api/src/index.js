@@ -1,24 +1,13 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const path = require('path');
 const { graphqlExpress, graphiqlExpress } = require('apollo-server-express');
 const { makeExecutableSchema } = require('graphql-tools');
+const { fileLoader, mergeTypes } = require('merge-graphql-schemas');
 
-const typeDefs = [`
-type Query {
-  hello: String
-}
-
-schema {
-  query: Query
-}`];
-
-const resolvers = {
-  Query: {
-    hello(root) {
-      return 'world';
-    }
-  }
-};
+const typesArray = fileLoader(path.join(__dirname, './types'));
+const typeDefs =  mergeTypes(typesArray);
+const resolvers = require('./resolvers')
 
 const schema = makeExecutableSchema({ typeDefs, resolvers });
 const app = express();

@@ -1,0 +1,4 @@
+type PR {
+  title: String
+  user: String
+}
