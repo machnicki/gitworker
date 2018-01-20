@@ -1,4 +1,10 @@
 type PR {
-  title: String
-  user: String
+  id: ID!
+  title: String!
+  date: Int!
+  author: User
+  repo: Repo
+  branchOut: String
+  branchIn: String
+  state: String!
 }

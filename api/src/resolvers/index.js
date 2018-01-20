@@ -1,9 +1,11 @@
+const PR = require('../models/pr')
+
 const resolvers = {
   Query: {
     PR(root) {
-      return { title: 'My title', user: 'Michael Jackson' };
+      return PR.get(1)
     }
   }
-};
+}
 
-module.exports = resolvers;
+module.exports = resolvers
