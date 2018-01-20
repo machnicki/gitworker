@@ -2,8 +2,11 @@ const PR = require('../models/pr');
 
 const resolvers = {
   Query: {
-    PR() {
-      return PR.get(1);
+    PRs() {
+      return PR.get();
+    },
+    PR(_, { id }) {
+      return PR.get(id);
     },
   },
 };

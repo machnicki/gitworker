@@ -37,10 +37,10 @@ const DB = [{
 
 PR.get = (id = null) => {
   if (id) {
-    const item = DB.find(({ id: _id }) => id === _id);
+    const item = DB.find(({ id: _id }) => parseInt(id, 10) === _id);
     return item ? PR(item) : null;
   }
-  return DB.map(User);
+  return DB.map(PR);
 };
 
 module.exports = PR;
