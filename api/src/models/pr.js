@@ -1,9 +1,9 @@
-const User = require('./user')
-const Repo = require('./repo')
+const User = require('./user');
+const Repo = require('./repo');
 
-const methods = {}
+const methods = {};
 
-const PR = function({
+const PR = ({
   id,
   title,
   date,
@@ -12,19 +12,17 @@ const PR = function({
   branchOut,
   branchIn,
   state,
-}) {
-  return {
-    id,
-    title,
-    date,
-    author: User.get(author),
-    repo: Repo.get(repo),
-    branchOut,
-    branchIn,
-    state,
-    __proto__: methods,
-  }
-}
+}) => ({
+  id,
+  title,
+  date,
+  author: User.get(author),
+  repo: Repo.get(repo),
+  branchOut,
+  branchIn,
+  state,
+  __proto__: methods,
+});
 
 const DB = [{
   id: 1,
@@ -34,15 +32,15 @@ const DB = [{
   repo: 1,
   branchOut: 'feature/123',
   branchIn: 'master',
-  state: 'open'
-}]
+  state: 'open',
+}];
 
 PR.get = (id = null) => {
   if (id) {
-    const item = DB.find(({ id: _id }) => id === _id)
-    return item ? PR(item) : null
+    const item = DB.find(({ id: _id }) => id === _id);
+    return item ? PR(item) : null;
   }
-  return DB.map(User)
-}
+  return DB.map(User);
+};
 
-module.exports = PR
+module.exports = PR;

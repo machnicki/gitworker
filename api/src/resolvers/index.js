@@ -1,11 +1,11 @@
-const PR = require('../models/pr')
+const PR = require('../models/pr');
 
 const resolvers = {
   Query: {
-    PR(root) {
-      return PR.get(1)
-    }
-  }
-}
+    PR() {
+      return PR.get(1);
+    },
+  },
+};
 
-module.exports = resolvers
+module.exports = resolvers;
