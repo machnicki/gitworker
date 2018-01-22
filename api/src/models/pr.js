@@ -43,4 +43,27 @@ PR.get = (id = null) => {
   return DB.map(PR);
 };
 
+PR.create = ({
+  title,
+  author,
+  repo,
+  branchOut,
+  branchIn,
+}) => {
+  const item = {
+    id: DB[DB.length - 1].id + 1,
+    title,
+    date: parseInt(new Date() / 1000, 10),
+    author,
+    repo,
+    branchOut,
+    branchIn,
+    state: 'open',
+  };
+
+  DB.push(item);
+
+  return PR(item);
+};
+
 module.exports = PR;

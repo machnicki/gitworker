@@ -9,6 +9,11 @@ const resolvers = {
       return PR.get(id);
     },
   },
+  Mutation: {
+    createPR(_, data) {
+      return PR.create(data);
+    },
+  },
 };
 
 module.exports = resolvers;
